@@ -70,4 +70,16 @@ class GameTest {
                 () -> game.round("Геймер3000", "Лунатик"));
     }
 
+    @Test
+    public void bothPlayerNotRegistered() {
+        Player luntick = new Player(324, "Лунтик", 1_200);
+        Player gamer3000 = new Player(123, "Геймер3000", 3_000);
+        Game game = new Game();
+
+        game.register(luntick);
+        game.register(gamer3000);
+        Assertions.assertThrows(NotRegisteredException.class,
+                () -> game.round("Геймер", "Лунатик"));
+    }
+
 }
